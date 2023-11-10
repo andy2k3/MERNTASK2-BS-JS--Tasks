@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK-4</title>
+    <style>
+        p{
+            border: 1px solid black;
+            padding: 10px;
+            width: 80px;
+            text-align: center;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <p>show date</p>
+    <div id="date"></div>
+    <br>
+    <br>
+    <p>show Time</p>
+    <div id="time"></div>
+
+    <script>
+        
+        let currentDate = new Date();
+
+        let TimeString = currentDate.toString();
+
+        let year = currentDate.getFullYear();
+        let month = currentDate.getMonth() + 1;
+        let day = currentDate.getDate();
+
+
+        month = month < 10 ? '0' + month : month;
+        day = day < 10 ? '0' + day : day;
+
+
+        let dateString = `${day}/${month}/${year}`;
+
+
+        console.log(dateString);
+
+
+        document.getElementById('time').innerText = TimeString;
+        document.getElementById('date').textContent = dateString;
+    </script>
+</body>
+</html>

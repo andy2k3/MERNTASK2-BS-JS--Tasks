@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div {
+    width: 900px;
+    height: 200px;
+    position: relative;
+    animation: mymove 4s infinite;
+    animation-play-state: paused;
+    
+}
+article{
+    margin-left: 400px;
+}
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(5, 5, 66);
+    font-size: 30px;
+}
+#start{
+    margin-left: 250px;
+}
+#stop{
+    margin-left: 20px;
+}
+</style>
+</head>
+<body>
+
+<script>
+function myPlayFunction() {
+    document.getElementById("train").style.animationPlayState = "running";
+}
+
+function myPauseFunction() {
+    document.getElementById("train").style.animationPlayState = "paused";
+}
+</script>
+<article>
+    <div id="train"><img src="train.jpeg" alt="train" ></div>
+    <br>
+        <p><b>click the following button to handle animation </b></p>
+    <br>
+        <button onclick="myPlayFunction()" id="start">Start</button>
+        <button onclick="myPauseFunction()" id="stop">Stop</button>
+</article>
+</body>
+</html>

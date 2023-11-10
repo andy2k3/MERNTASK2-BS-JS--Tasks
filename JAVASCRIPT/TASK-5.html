@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TASK-5</title>
+<style>
+    .error {
+color: red;
+}
+
+#form-container {
+margin: 20px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"] {
+width: 50%;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+input[type="submit"] {
+padding: 7px;
+background-color: lightgray;
+color: black;
+border: none;
+cursor: pointer;
+border: 1px solid rgba(49, 46, 46, 0.579);
+border-radius: 5%;
+font-size: 15px;
+}
+
+input[type="submit"]:hover {
+background-color: darkgray;
+}
+
+.error {
+color: red;
+}
+</style>
+</head>
+<body>
+<div id="form-container">
+    <form id="myForm" onsubmit="validateForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" >
+        <div id="nameError" class="error"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" >
+        <div id="emailError" class="error"></div>
+
+        <label for="website">Website:</label>
+        <input type="url" id="website" >
+        <div id="websiteError" class="error"></div>
+
+        <label for="message">Message:</label>
+        <textarea name="" id="message" cols="30" rows="10"></textarea>
+        <div id="messageError" class="error"></div>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    <script>
+    function validateForm(event) {
+        event.preventDefault();
+
+        var nameInput = document.getElementById("name");
+        var emailInput = document.getElementById("email");
+        var websiteInput = document.getElementById("website");
+        var messageInput = document.getElementById("message");
+
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var websiteError = document.getElementById("websiteError");
+        var messageError = document.getElementById("messageError")
+
+        nameError.textContent = "";
+        emailError.textContent = "";
+        websiteError.textContent = "";
+        messageError.textContent="";
+
+        if (nameInput.value === "") {
+        nameError.textContent = "Name is required";
+        nameInput.focus();
+        
+        
+        }
+
+        if (emailInput.value === "") {
+        emailError.textContent = "Email is required";
+        emailInput.focus();
+        
+        }
+
+        if (websiteInput.value === "") {
+        websiteError.textContent = "Website is required";
+        websiteInput.focus();
+        }
+
+        if (messageInput.value === "") {
+        messageError.textContent = "Website is required";
+        messageInput.focus();
+        return ;
+        }
+
+        
+
+
+        document.getElementById("myForm").submit();
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>TASK-8</title>
+<style>
+
+h2{
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 24px;     
+    font-style: normal; 
+    font-weight: bold; 
+    color: blue;
+    text-align: center; 
+    text-decoration: underline
+}
+table{
+    font-family: verdana; 
+    color:white; 
+    font-size: 16px; 
+    font-style: normal;
+    font-weight: bold;
+    background: linear-gradient(to bottom, rgb(207, 207, 106) 0%, #ff99cc 100%);  
+    border-collapse: collapse; 
+
+
+}
+table.inner{
+    border: 10px
+}
+input[type=text], input[type=email], input[type=number]{
+    width: 50%;
+    padding: 6px 12px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+input[type=submit], input[type=reset]{
+    width: 15%;
+    padding: 8px 12px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+<form name='registration' onSubmit="return formValidation();"></form>
+
+<table align="center" cellpadding = "10"> 
+    <h2 >Registration Form</h2>
+<!--------------------- First Name ------------------------------------------>
+<tr>
+<td>First Name</td>
+<td><input type="text" name="FirstName" maxlength="50" placeholder="Gayatri" />
+(Max 50 Characters Allowed)
+</td>
+</tr>
+<!------------------------ Last Name --------------------------------------->
+<tr>
+<td>Last Name</td>
+<td><input type="text" name="LastName" maxlength="50" placeholder="Yadav"/>
+(Max 50 Characters Allowed)
+</td>
+</tr>
+<!-------------------------- Email------------------------------------->
+<tr>
+<td>Email</td>
+<td><input type="email" name="Email" maxlength="100" placeholder="yghanendra@gmail.com"/></td>
+</tr>
+<!-- password  -->
+<tr>
+    <td>Password</td>
+    <td><input type="password" name="password" placeholder="password"></td>
+</tr>
+
+<tr>
+    <td>Re-enter Password</td>
+    <td><input type="password" name="Re-enter password" placeholder="Re-enter password"></td>
+</tr>
+<!---------------------- Gender ------------------------------------->
+<tr>
+    <td>Gender</td>
+    <td>
+    <input type="radio" name="msex" value="Male" />
+    Male
+    <input type="radio" name="fsex" value="Female" />
+    Female
+    </td>
+</tr>
+<!-------------------------- Mobile Number ------------------------------------->
+<tr>
+<td>Phone Number</td>
+<td>
+<input type="text" name="MobileNumber" maxlength="10" placeholder="7842xxxxxx"/>
+(10 Digits Allowed)
+</td>
+</tr>
+
+<!------------------------- Address ---------------------------------->
+<tr>
+<td>Address<br /><br /><br /></td>
+<td><textarea name="Address" rows="10" cols="50"></textarea></td>
+</tr>
+
+<!---------------------------- State ----------------------------------->
+<tr>
+<td>State</td>
+<td><input type="text" name="State" maxlength="50" placeholder="Karnataka"/>
+(Max 50 Characters Allowed)
+</td>
+</tr>
+<!------------------------------ Country --------------------------------->
+<tr>
+    <td>Country</td>
+    <td><input type="text" name="Country" placeholder="India" /></td>
+</tr>
+<!------------------------- Languages known-------------------------------------->
+<tr>
+<td>Languages known <br /><br /><br /></td>
+<td>
+<input type="checkbox" name="English" value="English" />
+English
+<input type="checkbox" name="Kannada" value="Kannada" />
+Kannada
+<input type="checkbox" name="Hindi" value="Hindi" />
+Hindi
+<input type="checkbox" name="Telugu" value="Telugu" />
+Telugu
+</td>
+</tr>
+<br>
+<tr>
+    
+    <td>
+    <input type="checkbox" name="agreement" value="agreement" />
+    Hereby I declare all the given details are true
+    
+    </td>
+</tr>
+<br>
+<tr>
+    <td><p style="text-align: end;">Log in to <a href="https://careers.ethnus.com/jobs/Careers">Ethnus</a> website</p></td>
+</tr>
+
+<!----------------------- Submit------------------------------->
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="Submit">
+</td>
+</tr>
+</table>
+</form>
+<script>
+    function formValidation()
+{
+var FirstName = document.registration.FirstName;
+var LastName = document.registration.LastName;
+var passid = document.registration.password;
+var uadd = document.registration.Address;
+var ucountry = document.registration.Country;
+var uemail = document.registration.Email;
+var umsex = document.registration.msex;
+var ufsex = document.registration.fsex; if(userid_validation(uid,5,12))
+{
+if(passid_validation(passid,7,12))
+{
+if(allLetter(FirstName))
+{
+if(alphanumeric(uadd))
+{ 
+if(countryselect(ucountry))
+{
+if(allLetter(FirstName))
+{
+if(ValidateEmail(uemail))
+{
+if(validsex(umsex,ufsex))
+{
+}
+} 
+}
+} 
+}
+}
+}
+}
+return false;
+}
+
+function passid_validation(passid,mx,my)
+{
+var passid_len = passid.value.length;
+if (passid_len == 0 ||passid_len >= my || passid_len < mx)
+{
+alert("Password should not be empty / length be between "+mx+" to "+my);
+passid.focus();
+return false;
+}
+return true;
+}
+
+
+function alphanumeric(uadd)
+{ 
+var letters = /^[0-9a-zA-Z]+$/;
+if(uadd.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('User address must have alphanumeric characters only');
+uadd.focus();
+return false;
+}
+}
+
+function countryselect(ucountry)
+{
+if(ucountry.value == "Default")
+{
+alert('Select your country from the list');
+ucountry.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+
+function ValidateEmail(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(uemail.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+uemail.focus();
+return false;
+}
+}
+
+function validsex(umsex,ufsex)
+{
+x=0;
+
+if(umsex.checked) 
+{
+x++;
+} if(ufsex.checked)
+{
+x++; 
+}
+if(x==0)
+{
+alert('Select Male/Female');
+umsex.focus();
+return false;
+}
+else
+{
+alert('Form Successfully Submitted');
+window.location.reload()
+return true;}
+}
+</script>
+</body>
+</html>
